@@ -2,6 +2,7 @@ import qs from "qs";
 
 const formType = /application\/x-www-form-urlencoded/;
 const jsonType = /application\/json/;
+const uint8arrayType = /application\/uint8array/;
 
 const parseContentType = (
   contentType?: string
@@ -12,6 +13,7 @@ const parseContentType = (
   if (charsetMatch && charsetMatch.length > 1) charset = charsetMatch[1];
   if (jsonType.test(contentType)) return { type: "json", charset };
   if (formType.test(contentType)) return { type: "form", charset };
+  if (uint8arrayType.test(contentType)) return { type: "uint8array", charset };
   return {};
 };
 
