@@ -1,0 +1,24 @@
+{
+  "name": "@cch137/body-parser",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "devbuild": "tsc -w",
+    "devstart": "nodemon ./dist/index.js",
+    "test": "npm-run-all --parallel devbuild devstart"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://cch137.link/"
+  },
+  "author": "cch137",
+  "license": "ISC",
+  "dependencies": {
+    "qs": "^6.11.2"
+  },
+  "devDependencies": {
+    "@types/qs": "^6.9.11"
+  }
+}
