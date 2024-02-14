@@ -40,15 +40,15 @@ export default async function bodyParser(req: any, res: any, next: any) {
   switch (contentType) {
     case "form": {
       req.body = qs.parse(new TextDecoder(charset).decode(body));
-      return;
+      break;
     }
     case "json": {
       req.body = JSON.parse(new TextDecoder(charset).decode(body));
-      return;
+      break;
     }
     case "uint8array": {
       req.body = body;
-      return;
+      break;
     }
     default: {
       try {
