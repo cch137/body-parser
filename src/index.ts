@@ -5,7 +5,7 @@ const jsonType = /application\/json/;
 
 const parseContentType = (
   contentType?: string
-): { type?: "json" | "form"; charset?: string } => {
+): { type?: "json" | "form" | "uint8array"; charset?: string } => {
   if (!contentType) return {};
   let charset: string | undefined;
   const charsetMatch = contentType.match(/charset=([^\s;]+)/);
@@ -42,6 +42,10 @@ export default async function bodyParser(req: any, res: any, next: any) {
     }
     case "json": {
       req.body = JSON.parse(new TextDecoder(charset).decode(body));
+      return;
+    }
+    case "uint8array": {
+      req.body = body;
       return;
     }
     default: {
